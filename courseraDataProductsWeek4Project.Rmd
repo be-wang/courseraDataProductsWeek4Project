@@ -1,0 +1,43 @@
+---
+title: "Data Products Week 4 Project"
+date: "June 28, 2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+This presentation is part of the assignment for the Coursera *Developing Data Products* 
+course. It will describe a Shiny application that can help identify the optimal feed type for 
+chicks to maximize growth.
+
+## Data
+The data used for this project is from the `chickwts` data set. Newly hatched chicks were randomly allocated into six groups, and each group was given a different feed supplement. Their weights in grams after six weeks are given along with feed types. 
+
+The data looks like:
+```{r, comment="", echo=TRUE}
+head(chickwts)
+```
+
+## How it works
+In this app, one can select different types of feed supplements to visualize boxplots of associated chick weights. An example output:
+```{r, message=FALSE, results="hide"}
+library(ggplot2)
+ggplot(chickwts, aes(x=feed, y=weight, color = feed)) +
+        geom_boxplot() +
+        geom_dotplot(binaxis='y', stackdir='center', dotsize=0.5) +
+        xlab("Feed Type") + ylab("Weight (grams)")
+```
+
+
+
+## Summary
+This app can be useful to quickly determine optimal feed type for chicks.  
+
+* Shiny app can be found here:  
+https://be-wang.shinyapps.io/courseraDataProductsApp/  
+
+*  Github repository can be found here:  
+https://github.com/be-wang/courseraDataProductsWeek4Project
